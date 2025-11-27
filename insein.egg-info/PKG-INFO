@@ -1,0 +1,27 @@
+Metadata-Version: 2.4
+Name: insein
+Version: 1.0.0
+Summary: The Shapeshifting Network Scanner with Kernel Injection
+Home-page: https://github.com/scxr-dev/insein
+Author: R H A Ashan Imalka (scxr-dev)
+Author-email: itrandar@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Topic :: Security
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: rich
+Requires-Dist: aiohttp
+Requires-Dist: scapy
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+INSEIN - The Shapeshifting Network Scanner"Logic Beyond Sanity"WARNING: This tool contains advanced stealth mechanics and low-level kernel injection techniques. It is designed for educational purposes and authorized security auditing only.ðŸ‘‘ AUTHOR & CREATORR H A Ashan Imalka (scxr-dev)ðŸ§  ARCHITECTYumi (AI) & Asagi (Visionary)ðŸ“œ LICENSEAll rights reserved to R H A Ashan Imalka.Any usage of this tool's source code for malicious purposes is strictly prohibited.ðŸ©¸ CORE PHILOSOPHY"Why use a door when you can become the wall?"-- scxr-dev

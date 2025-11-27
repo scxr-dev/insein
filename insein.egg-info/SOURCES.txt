@@ -1,0 +1,8 @@
+insein.py
+setup.py
+insein.egg-info/PKG-INFO
+insein.egg-info/SOURCES.txt
+insein.egg-info/dependency_links.txt
+insein.egg-info/entry_points.txt
+insein.egg-info/requires.txt
+insein.egg-info/top_level.txt
