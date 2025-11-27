@@ -19,16 +19,14 @@ import argparse
 import asyncio
 import traceback
 
-# --- AUTO-INSTALLER REMOVED ---
-# Why? Because 'setup.py' handles dependencies now. 
-# Real packages don't auto-install inside the code.
-
 from rich.live import Live
-from core.ghost_engine import GhostScanner
-from core.insane_logic import InsaneBrain
-from ui.cyberpunk import CyberpunkDashboard
-from modules.decoy import DecoyGenerator
-from modules.time_travel import TimeTraveler
+
+# --- UPDATED IMPORTS (Unique Names) ---
+from insein_core.ghost_engine import GhostScanner
+from insein_core.insane_logic import InsaneBrain
+from insein_ui.cyberpunk import CyberpunkDashboard
+from insein_modules.decoy import DecoyGenerator
+from insein_modules.time_travel import TimeTraveler
 
 def check_root():
     if os.geteuid() != 0:

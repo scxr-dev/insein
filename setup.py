@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="insein",
-    version="1.0.0",
+    version="1.0.2",
     description="The Shapeshifting Network Scanner with Kernel Injection",
     long_description=open("AUTHOR.md").read(),
     long_description_content_type="text/markdown",

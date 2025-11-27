@@ -1,1 +1,4 @@
 insein
+insein_core
+insein_modules
+insein_ui

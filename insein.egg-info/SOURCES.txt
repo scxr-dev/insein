@@ -6,3 +6,12 @@ insein.egg-info/dependency_links.txt
 insein.egg-info/entry_points.txt
 insein.egg-info/requires.txt
 insein.egg-info/top_level.txt
+insein_core/__init__.py
+insein_core/_ctypes_injector.py
+insein_core/ghost_engine.py
+insein_core/insane_logic.py
+insein_modules/__init__.py
+insein_modules/decoy.py
+insein_modules/time_travel.py
+insein_ui/__init__.py
+insein_ui/cyberpunk.py
