@@ -21,7 +21,7 @@ import traceback
 
 from rich.live import Live
 
-# --- UPDATED IMPORTS (Unique Names) ---
+
 from insein_core.ghost_engine import GhostScanner
 from insein_core.insane_logic import InsaneBrain
 from insein_ui.cyberpunk import CyberpunkDashboard
@@ -35,7 +35,7 @@ def check_root():
         sys.exit(1)
 
 async def main_loop(target_ip, ports):
-    # 1. Initialize
+   
     dashboard = CyberpunkDashboard(target_ip)
     decoy_gen = DecoyGenerator()
     scanner = GhostScanner(target_ip, decoy_generator=decoy_gen)
@@ -44,13 +44,13 @@ async def main_loop(target_ip, ports):
 
     dashboard.update_state(new_log=("Initializing Kernel Injector...", "INFO"))
 
-    # 2. Decoys
+    
     active_decoys = decoy_gen.generate_batch(5)
     scanner.load_decoys(active_decoys)
     dashboard.update_state(new_log=(f"Generated {len(active_decoys)} Decoy IPs.", "INFO"))
     dashboard.update_state(decoy_count=len(active_decoys))
 
-    # 3. Start UI with CRASH PROTECTION
+    
     try:
         with Live(dashboard.render(), refresh_per_second=4, screen=True) as live:
             
@@ -59,7 +59,7 @@ async def main_loop(target_ip, ports):
             
             dashboard.update_state(new_log=("Ghost Protocol: ENGAGED.", "SUCCESS"))
             
-            # 4. Scanning Loop
+            
             chunk_size = 5 
             total_scanned = 0
             
@@ -95,7 +95,7 @@ async def main_loop(target_ip, ports):
                 live.update(dashboard.render())
                 await asyncio.sleep(0.05)
 
-            # --- INFINITE HOLD ---
+           
             dashboard.update_state(new_log=("Scan Complete. SYSTEM HOLD.", "SUCCESS"))
             dashboard.update_state(new_log=("Press Ctrl+C to exit.", "INFO"))
             live.update(dashboard.render())
@@ -109,7 +109,7 @@ async def main_loop(target_ip, ports):
         raise e
 
 def run():
-    """Wrapper for setup.py entry point"""
+    
     check_root()
     parser = argparse.ArgumentParser(description="INSEIN - Advanced Stealth Scanner")
     parser.add_argument("target", help="Target IP Address")

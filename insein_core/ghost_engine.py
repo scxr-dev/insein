@@ -20,7 +20,7 @@ import asyncio
 import time
 from ._ctypes_injector import KernelSocket
 
-# TCP Flags
+
 TCP_FIN = 0x01
 TCP_SYN = 0x02
 TCP_RST = 0x04
@@ -29,7 +29,6 @@ TCP_ACK = 0x10
 TCP_URG = 0x20
 
 def checksum(msg: bytes) -> int:
-    """Calculate the Internet Checksum (RFC 1071)."""
     s = 0
     if len(msg) % 2 == 1:
         msg += b'\0'
@@ -41,7 +40,7 @@ def checksum(msg: bytes) -> int:
     return (~s) & 0xffff
 
 class GhostPacket:
-    """Constructs Raw TCP/IP Packets from scratch."""
+    
     def __init__(self, src_ip, dst_ip, dst_port, payload=None):
         self.src_ip = src_ip
         self.dst_ip = dst_ip
@@ -53,9 +52,7 @@ class GhostPacket:
         self.payload = payload or b""
 
     def build_ip(self, tcp_packet_len):
-        """
-        Builds the IPv4 Header.
-        """
+       
         ihl = 5
         version = 4
         tos = 0
@@ -76,7 +73,7 @@ class GhostPacket:
         return ip_header
 
     def build_tcp(self, flags=TCP_SYN):
-        """Builds the TCP Header + Pseudo Header for Checksum."""
+        
         doff = 5
         
         tcp_header_pack = struct.pack(
@@ -108,7 +105,7 @@ class GhostPacket:
         return tcp_header + self.payload
 
     def get_full_packet(self):
-        """Returns the full Raw packet (IP + TCP + Data)."""
+        
         tcp_part = self.build_tcp()
         ip_part = self.build_ip(len(tcp_part))
         return ip_part + tcp_part
@@ -129,11 +126,11 @@ class GhostScanner:
     def _get_local_ip(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         try:
-            # Try connecting to Google DNS to find our public-facing interface
+           
             s.connect(('8.8.8.8', 1))
             IP = s.getsockname()[0]
         except Exception:
-            # Fallback for offline/local testing
+            
             IP = '127.0.0.1'
         finally:
             s.close()

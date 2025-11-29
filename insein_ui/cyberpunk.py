@@ -32,7 +32,7 @@ class CyberpunkDashboard:
         self._init_layout()
 
     def _init_layout(self):
-        """Splits the terminal into sections: Header, Stats, Map, Logs."""
+        
         self.layout.split(
             Layout(name="header", size=3),
             Layout(name="main", ratio=1),
@@ -48,7 +48,7 @@ class CyberpunkDashboard:
         )
 
     def _generate_header(self) -> Panel:
-        """Creates the top status bar."""
+       
         grid = Table.grid(expand=True)
         grid.add_column(justify="left", ratio=1)
         grid.add_column(justify="right")
@@ -60,7 +60,7 @@ class CyberpunkDashboard:
         return Panel(grid, style="magenta")
 
     def _generate_stats(self) -> Panel:
-        """Creates the statistics panel."""
+        
         table = Table(show_header=False, expand=True, box=None)
         table.add_column("Key", style="cyan")
         table.add_column("Value", style="bold white")
@@ -76,19 +76,19 @@ class CyberpunkDashboard:
         return Panel(table, title="[ SYSTEMS ]", border_style="cyan")
 
     def _generate_ports(self) -> Panel:
-        """Creates the list of discovered open ports."""
+       
         table = Table(show_header=True, expand=True, header_style="bold green")
         table.add_column("PORT", width=8)
         table.add_column("SERVICE")
         
-        # Show last 10 ports found
+
         for port in self.ports_found[-10:]:
             table.add_row(str(port), "UNKNOWN/TCP") 
             
         return Panel(table, title="[ OPEN PORTS ]", border_style="green")
 
     def _generate_logs(self) -> Panel:
-        """Creates the scrolling log window."""
+        
         log_text = Text()
         for timestamp, msg, level in self.logs[-12:]:
             color = "white"
@@ -102,12 +102,12 @@ class CyberpunkDashboard:
         return Panel(log_text, title="[ KERNEL LOGS ]", border_style="white")
 
     def _generate_footer(self) -> Panel:
-        """Creates a footer to fix the visual glitch."""
+       
         text = Text("STATUS: SCANNING COMPLETE | PRESS CTRL+C TO EXIT", justify="center", style="bold red blinking")
         return Panel(text, style="red")
 
     def update_state(self, new_log=None, new_port=None, waf_status=None, decoy_count=None):
-        """Updates internal state variables."""
+        
         if new_log:
             time_str = datetime.now().strftime("%H:%M:%S")
             self.logs.append((time_str, new_log[0], new_log[1]))
@@ -119,7 +119,7 @@ class CyberpunkDashboard:
             self.decoy_count = decoy_count
 
     def render(self) -> Layout:
-        """Compiles the layout for the Live display."""
+        
         self.layout["header"].update(self._generate_header())
         self.layout["stats"].update(self._generate_stats())
         self.layout["ports"].update(self._generate_ports())

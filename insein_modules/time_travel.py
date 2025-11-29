@@ -19,12 +19,7 @@ class TimeTraveler:
         self.wayback_api = "http://archive.org/wayback/available"
 
     async def get_history(self) -> dict:
-        """
-        Queries the Wayback Machine API for the target domain.
-        
-        Returns:
-            dict: Structured historical data including last snapshot date and URL.
-        """
+       
         async with aiohttp.ClientSession() as session:
             try:
                 params = {"url": self.target}
@@ -38,7 +33,7 @@ class TimeTraveler:
         return {"status": "NO_DATA"}
 
     def _parse_wayback(self, data: dict) -> dict:
-        """Parses the raw JSON response from Wayback Machine."""
+        
         try:
             snapshots = data.get("archived_snapshots", {})
             closest = snapshots.get("closest", {})
